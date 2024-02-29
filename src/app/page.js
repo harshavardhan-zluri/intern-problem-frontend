@@ -297,7 +297,7 @@ const Home = () => {
           )}
           <InputForm onSubmit={handleSubmit}>
             {entries.map((entry, index) => (
-              <div key={index}>
+              <Contract key={index}>
                 <input
                   type="text"
                   placeholder="Description"
@@ -308,6 +308,7 @@ const Home = () => {
                     setEntries(updatedEntries);
                   }}
                 />
+                <div>
                 <input
                   type="number"
                   placeholder="Amount"
@@ -333,6 +334,8 @@ const Home = () => {
                   <option value="MYR">MYR</option>
                   <option value="INR">INR</option>
                 </select>
+                </div>
+                <p></p>
                 <input
                   type="date"
                   value={entry.date}
@@ -343,13 +346,16 @@ const Home = () => {
                     setEntries(updatedEntries);
                   }}
                 />
-              </div>
+                <p></p>
+                <p></p>
+              </Contract>
             ))}
             <input type="file" accept=".csv" onChange={handleFileChange} />
             <button type="button" onClick={handleAddEntry}>
               Add another transaction
             </button>
             <button type="submit">Save Data</button>
+            <button onClick={()=>setEntries([])}>Cancel</button>
           </InputForm>
         </Grid>
       </div>
@@ -370,6 +376,7 @@ const ContractDiv = styled.div`
   border: 1px solid #fff;
   width: fit-content;
   height: fit-content;
+  width: 100%;
 `;
 const Contract = styled.div`
   border-bottom: 1px solid #fff;
@@ -391,6 +398,7 @@ const InputForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
   input {
     height: 20px;
   }
